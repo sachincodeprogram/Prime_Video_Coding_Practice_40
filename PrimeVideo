@@ -1,0 +1,84 @@
+// Write your code here
+import MoviesSlider from '../MoviesSlider'
+
+import './index.css'
+
+const actionMovie = 'ACTION'
+const comedyMovie = 'COMEDY'
+const horrorMovie = 'HORROR'
+
+const PrimeVideo = props => {
+  const {moviesList} = props
+
+  const actionMoviesList = moviesList.filter(
+    eachmovie => eachmovie.categoryId === actionMovie,
+  )
+  const comedyMoviesList = moviesList.filter(
+    eachmovie => eachmovie.categoryId === comedyMovie,
+  )
+  const horrorMoviesList = moviesList.filter(
+    eachmovie => eachmovie.categoryId === horrorMovie,
+  )
+
+  return (
+    <div className="prime-video-container">
+      <img
+        className="image"
+        src="https://assets.ccbp.in/frontend/react-js/prime-video-img.png"
+        alt="prime video"
+      />
+      <div className="movies-container">
+        <h1 className="movies-heading">Action Movies</h1>
+        <MoviesSlider moviesList={actionMoviesList} />
+        <h1 className="movies-heading">Comedy Movies</h1>
+        <MoviesSlider moviesList={comedyMoviesList} />
+        <h1 className="movies-heading">Horror Movies</h1>
+        <MoviesSlider moviesList={horrorMoviesList} />
+      </div>
+    </div>
+  )
+}
+export default PrimeVideo
+
+
+
+
+
+
+
+/* Write your CSS here */
+.prime-video-container {
+  background-color: #000000;
+  padding-bottom: 32px;
+  min-height: 100vh;
+}
+.image {
+  width: 100%;
+}
+
+.movies-container {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 32px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+@media screen and (min-width: 768px) {
+  .movies-container {
+    max-width: 1110px;
+  }
+}
+.movies-heading {
+  color: #fff;
+  font-size: 20px;
+  font-family: 'Roboto';
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 32px;
+  margin-bottom: 25px;
+}
+@media screen and (min-width: 768px) {
+  .movies-heading {
+    font-size: 32px;
+  }
+}
